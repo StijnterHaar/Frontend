@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Trainer from "./comp/Trainer";
 
-
-
-
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,20 +41,19 @@ const App = () => {
     });
 
   return (
-    <div className="Pokedex p-4 flex justify-center h-screen">
-
-      <div className="max-w-3xl ">
-        <h1 className="text-3xl font-bold flex justify-center mb-5">Pokedex</h1>
-        <div className="flex justify-center	mb-4 ">
+    <div className="flex justify-center h-screen bg-gray-200">
+      <div className="max-w-3xl bg-white rounded-lg shadow-md p-4 w-full">
+        <h1 className="text-3xl font-bold text-center mb-5">Pokedex</h1>
+        <div className="flex justify-center mb-4">
           <input
             type="text"
-            className="px-2 py-1 rounded border"
+            className="px-4 py-2 rounded border w-1/2 mr-2"
             placeholder="Search Pokemon"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <select
-            className="px-2 py-1 rounded border"
+            className="px-4 py-2 rounded border w-1/2 ml-2"
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
           >
@@ -69,24 +65,29 @@ const App = () => {
             <option value="flying">Flying</option>
           </select>
         </div>
-        <div className="flex flex-col overflow-y-scroll h-4/6	border-b-4  border-t-4 border-indigo-4 w-full">
+        <div className="flex flex-col overflow-y-scroll h-4/5 border-b-4 border-t-4 border-indigo-400 w-full">
           {filteredPokemons.map((pokemon) => (
             <div
               key={pokemon.id}
-              className="flex items-center p-4 border-b-2 border-indigo-4"
+              className="flex items-center p-4 border-b-2 border-indigo-400"
             >
               <img
-                className="w-100"
+                className="w-16 h-16 mr-4"
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name}
               />
               <div className="flex flex-col">
-                <b>{pokemon.name}</b>
+                <b className="text-xl">{pokemon.name}</b>
                 <b>#{pokemon.id}</b>
               </div>
-              <ul className="flex justify-center gap-4">
+              <ul className="flex justify-center gap-4 ml-auto">
                 {pokemon.types.map((type, index) => (
-                  <li key={index}>{type.type.name}</li>
+                  <li
+                    key={index}
+                    className="text-sm text-gray-600 bg-gray-200 px-2 py-1 rounded"
+                  >
+                    {type.type.name}
+                  </li>
                 ))}
               </ul>
             </div>

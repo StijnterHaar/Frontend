@@ -18,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </div>
       <Routes>
         <Route path="/" element={<App></App>}></Route>
+        <Route path="/Trainer" element={<Trainer></Trainer>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
